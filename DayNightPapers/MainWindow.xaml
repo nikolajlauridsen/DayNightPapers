@@ -1,0 +1,20 @@
+﻿<Window x:Class="DayNightPapers.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DayNightPapers"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel>
+        <WrapPanel DockPanel.Dock="Top" Margin="10">
+            <Label Name="DayPaperLocation">Please select a wallpaper</Label>
+            <Button Name="DayPickerBtn" Click="DayPickerBtn_Click">Select wallpaper</Button>
+        </WrapPanel>
+
+        <WrapPanel DockPanel.Dock="Top" Margin="10">
+            <Label Name="NightPaperLocation">Please select a wallpaper</Label>
+            <Button Name="NightPickerBtn" Click="NightPickerBtn_Click" >Select wallpaper</Button>
+        </WrapPanel>
+    </DockPanel>
+</Window>

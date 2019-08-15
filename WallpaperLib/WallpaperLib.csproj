@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiResult.cs" />
     <Compile Include="DayNightSwitcher.cs" />
+    <Compile Include="SunData.cs" />
     <Compile Include="SunTime.cs" />
     <Compile Include="WallpaperChanger.cs" />
     <Compile Include="WallpaperStore.cs" />

@@ -47,6 +47,10 @@ namespace WallpaperLib
             // Add longtitude
             builder.Append("&lng=");
             builder.Append(Longtitude);
+            // Add date
+            builder.Append("&date=today");
+            // Add formatted
+            builder.Append("&formatted=0");
             
 
             WebRequest req = WebRequest.Create(builder.ToString());

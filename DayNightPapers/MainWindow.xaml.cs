@@ -27,6 +27,7 @@ namespace DayNightPapers
     public partial class MainWindow : Window
     {
         private WallpaperStore store = new WallpaperStore();
+        private WallpaperChanger changer = new WallpaperChanger();
 
         public MainWindow()
         {
@@ -45,6 +46,7 @@ namespace DayNightPapers
             {
                 store.DayPaper = paperPath;
                 DayPaperLocation.Content = Path.GetFileName(store.DayPaper); ;
+                changer.SetWallpaper(store.DayPaper);
             }
             
         }

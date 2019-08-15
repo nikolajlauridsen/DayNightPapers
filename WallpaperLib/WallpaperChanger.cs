@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WallpaperLib
 {
-    public class WallpaperChanger
+    internal class WallpaperChanger
     {
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         private static extern int SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni);

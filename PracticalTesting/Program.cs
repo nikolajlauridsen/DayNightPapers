@@ -12,11 +12,13 @@ namespace PracticalTesting
     {
         static void Main(string[] args)
         {
-            WallpaperStore store = new WallpaperStore();
-            WallpaperChanger wp = new WallpaperChanger();
+            SunTime sun = new SunTime();
+            sun.Latitude = 55.567231;
+            sun.Longtitude = 9.754025;
             // The code provided will print ‘Hello World’ to the console.
             // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine(store.DayPaper);
+            Console.WriteLine("Requesting API");
+            Console.WriteLine(sun.setTimes());
             Console.ReadKey();
 
             // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 

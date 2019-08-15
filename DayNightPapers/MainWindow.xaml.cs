@@ -26,16 +26,15 @@ namespace DayNightPapers
     /// </summary>
     public partial class MainWindow : Window
     {
-        private WallpaperStore store = new WallpaperStore();
-        private WallpaperChanger changer = new WallpaperChanger();
+        private DayNightSwitcher switcher = new DayNightSwitcher();
 
         public MainWindow()
         {
             InitializeComponent();
 
-            if (store.DayPaper != null) DayPaperLocation.Content = Path.GetFileName(store.DayPaper);
+            if (switcher.DayPaper != null) DayPaperLocation.Content = Path.GetFileName(switcher.DayPaper);
             else DayPaperLocation.Content = "Please select a wallpaper";
-            if (store.NightPaper != null) NightPaperLocation.Content = Path.GetFileName(store.NightPaper);
+            if (switcher.NightPaper != null) NightPaperLocation.Content = Path.GetFileName(switcher.NightPaper);
             else NightPaperLocation.Content = "Please select a wallpaper";
         }
 
@@ -44,9 +43,11 @@ namespace DayNightPapers
             string paperPath = selectImage();
             if (paperPath != null)
             {
-                store.DayPaper = paperPath;
-                DayPaperLocation.Content = Path.GetFileName(store.DayPaper); ;
-                changer.SetWallpaper(store.DayPaper);
+                switcher.DayPaper = paperPath;
+                switcher.ForcePaperCheck();
+
+                DayPaperLocation.Content = Path.GetFileName(switcher.DayPaper); ;
+                
             }
             
         }
@@ -56,8 +57,10 @@ namespace DayNightPapers
             string paperPath = selectImage();
             if (paperPath != null)
             {
-                store.NightPaper = paperPath;
-                NightPaperLocation.Content = Path.GetFileName(store.NightPaper);
+                switcher.NightPaper = paperPath;
+                switcher.ForcePaperCheck();
+
+                NightPaperLocation.Content = Path.GetFileName(switcher.NightPaper);
             }
         }
 

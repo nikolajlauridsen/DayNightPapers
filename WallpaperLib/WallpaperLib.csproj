@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DayNightSwitcher.cs" />
+    <Compile Include="SunTime.cs" />
     <Compile Include="WallpaperChanger.cs" />
     <Compile Include="WallpaperStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

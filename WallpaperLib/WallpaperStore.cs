@@ -9,7 +9,7 @@ using WallpaperLib.Properties;
 
 namespace WallpaperLib
 {
-    public class WallpaperStore
+    internal class WallpaperStore
     {
         private static string _cacheName = @"PaperCache";
 

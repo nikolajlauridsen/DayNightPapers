@@ -46,5 +46,29 @@ namespace WallpaperLib.Properties {
                 this["NightPaperName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("55.567231")]
+        public double Latitude {
+            get {
+                return ((double)(this["Latitude"]));
+            }
+            set {
+                this["Latitude"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9.754025")]
+        public double Longtitude {
+            get {
+                return ((double)(this["Longtitude"]));
+            }
+            set {
+                this["Longtitude"] = value;
+            }
+        }
     }
 }

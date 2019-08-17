@@ -11,7 +11,7 @@ namespace SunData
     public class ApiResult
     {
         [DataMember]
-        public SunData results;
+        public SunTimeData results;
         [DataMember]
         public string status;
     }

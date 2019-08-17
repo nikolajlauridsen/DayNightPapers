@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.Remoting.Messaging;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using SunData.Properties;
@@ -32,12 +34,15 @@ namespace SunData
             }
         }
 
-        private DateTime? sunrise = null;
-        public DateTime Sunrise { get; set; }
-        private DateTime? sunset = null;
-        public DateTime Sunset { get; set; }
+        private ApiResult _apiResult = null;
 
-        public string setTimes()
+        public SunTimeData SunTimeData => getApiResult().results;
+        public string ApiStatus => getApiResult().status;
+
+        public DateTime Sunrise => SunTimeData.Sunrise;
+        public DateTime Sunset => SunTimeData.Sunset;
+
+        private string getJsonString()
         {
             // Not optimal TODO: Revise
             StringBuilder builder = new StringBuilder(apiUrl);
@@ -55,7 +60,7 @@ namespace SunData
 
             WebRequest req = WebRequest.Create(builder.ToString());
             WebResponse res = req.GetResponse();
-
+            
             string content = "";
             using (Stream datastream = res.GetResponseStream())
             {
@@ -64,6 +69,25 @@ namespace SunData
             }
 
             return content;
+        }
+        
+        private ApiResult getApiResult()
+        {
+            if (_apiResult == null)
+            {
+                string jsonString = getJsonString();
+                MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString));
+                ApiResult data = new ApiResult();
+                DataContractJsonSerializer serializer = new DataContractJsonSerializer(data.GetType());
+                data = serializer.ReadObject(ms) as ApiResult;
+                ms.Close();
+                _apiResult = data;
+                return data;
+            }
+            else
+            {
+                return _apiResult;
+            }
         }
     }
 }

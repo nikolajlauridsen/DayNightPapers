@@ -22,20 +22,14 @@ namespace PracticalTesting
             
 
             Console.WriteLine("Requesting API");
-            string apiResult = sun.setTimes();
+            Console.WriteLine($"\nStatus: {sun.ApiStatus}");
 
-            Console.WriteLine("API result:\n" + apiResult + "\n\n");
+            SunTimeData data = sun.SunTimeData;
 
-            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(apiResult));
-            ApiResult data = new ApiResult();
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(data.GetType());
-            data = serializer.ReadObject(ms) as ApiResult;
-            ms.Close();
-
-            Console.WriteLine($"Status: {data.status}\nSunrise: {data.results.Sunrise}\nSunset: {data.results.Sunset}\nSolar noon: {data.results.SolarNoon}\n" +
-                              $"Day length: {data.results.DayLength}\nCivil twilight: {data.results.CivilTwilightBegin} --> {data.results.CivilTwilightEnd}\n" +
-                              $"Nautical twilight: {data.results.NauticalTwilightBegin} --> {data.results.NauticalTwilightEnd}\n " +
-                              $"Astronomical twilight: {data.results.AstronomicalTwilightBegin} --> {data.results.AstronomicalTwilightEnd}");
+            Console.WriteLine($"Sunrise: {sun.Sunrise}\nSunset: {sun.Sunset}\nSolar noon: {data.SolarNoon}\n" +
+                              $"Day length: {data.DayLength}\nCivil twilight: {data.CivilTwilightBegin} --> {data.CivilTwilightEnd}\n" +
+                              $"Nautical twilight: {data.NauticalTwilightBegin} --> {data.NauticalTwilightEnd}\n" +
+                              $"Astronomical twilight: {data.AstronomicalTwilightBegin} --> {data.AstronomicalTwilightEnd}");
 
             Console.ReadKey();
         }

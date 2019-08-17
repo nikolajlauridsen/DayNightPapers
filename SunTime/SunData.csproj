@@ -49,7 +49,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="SunData.cs" />
+    <Compile Include="SunTimeData.cs" />
     <Compile Include="SunTime.cs" />
   </ItemGroup>
   <ItemGroup>

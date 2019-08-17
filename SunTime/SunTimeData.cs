@@ -10,7 +10,7 @@ using System.Runtime.Serialization.Json;
 namespace SunData
 {
     [DataContract]
-    public class SunData
+    public class SunTimeData
     {
 
         //Sunrise

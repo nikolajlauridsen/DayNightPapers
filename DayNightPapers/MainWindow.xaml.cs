@@ -21,16 +21,20 @@ using Path = System.IO.Path;
 
 namespace DayNightPapers
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    
     public partial class MainWindow : Window
     {
         private DayNightSwitcher switcher = new DayNightSwitcher();
+        private System.Windows.Forms.NotifyIcon trayIcon;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            // TODO: Change icon and embed in exe, possibly stop using forms if I can find a decent way around it
+            trayIcon = new System.Windows.Forms.NotifyIcon();
+            trayIcon.Icon = new System.Drawing.Icon("icon.ico");
+            trayIcon.MouseDoubleClick += trayIcon_MouseDoubleClick;
 
             if (switcher.DayPaper != null) DayPaperLocation.Content = Path.GetFileName(switcher.DayPaper);
             else DayPaperLocation.Content = "Please select a wallpaper";
@@ -78,5 +82,23 @@ namespace DayNightPapers
             return null;
         }
 
+        // Minimize to tray stuff
+        void trayIcon_MouseDoubleClick(object sender,
+            System.Windows.Forms.MouseEventArgs e)
+        {
+            this.WindowState = WindowState.Normal;
+        }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == WindowState.Minimized) {
+                this.ShowInTaskbar = false;
+                this.Focus();
+                trayIcon.Visible = true;
+            } else if (this.WindowState == WindowState.Normal) {
+                trayIcon.Visible = false;
+                this.ShowInTaskbar = true;
+            }
+        }
     }
 }

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization.Json;
 
-namespace WallpaperLib
+namespace SunData
 {
     [DataContract]
     public class SunData

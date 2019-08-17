@@ -51,6 +51,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SunTime\SunData.csproj">
+      <Project>{742cffed-d23c-448c-bdab-c9ff09281b61}</Project>
+      <Name>SunData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WallpaperLib\WallpaperLib.csproj">
       <Project>{b4ec0abe-302b-4787-962f-0933247b7b6c}</Project>
       <Name>WallpaperLib</Name>

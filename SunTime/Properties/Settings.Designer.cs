@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WallpaperLib.Properties {
+namespace SunData.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,25 +25,25 @@ namespace WallpaperLib.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DayPaperName {
+        [global::System.Configuration.DefaultSettingValueAttribute("55.567231")]
+        public double Latitude {
             get {
-                return ((string)(this["DayPaperName"]));
+                return ((double)(this["Latitude"]));
             }
             set {
-                this["DayPaperName"] = value;
+                this["Latitude"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string NightPaperName {
+        [global::System.Configuration.DefaultSettingValueAttribute("9.754025")]
+        public double Longtitude {
             get {
-                return ((string)(this["NightPaperName"]));
+                return ((double)(this["Longtitude"]));
             }
             set {
-                this["NightPaperName"] = value;
+                this["Longtitude"] = value;
             }
         }
     }

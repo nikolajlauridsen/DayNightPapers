@@ -5,9 +5,9 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using WallpaperLib.Properties;
+using SunData.Properties;
 
-namespace WallpaperLib
+namespace SunData
 {
     public class SunTime
     {

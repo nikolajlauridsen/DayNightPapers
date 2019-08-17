@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization.Json;
 
 using WallpaperLib;
+using SunData;
 
 namespace PracticalTesting
 {
@@ -23,7 +24,8 @@ namespace PracticalTesting
             Console.WriteLine("Requesting API");
             string apiResult = sun.setTimes();
 
-           Console.WriteLine("API result:\n" + apiResult + "\n\n");
+            Console.WriteLine("API result:\n" + apiResult + "\n\n");
+
             MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(apiResult));
             ApiResult data = new ApiResult();
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(data.GetType());

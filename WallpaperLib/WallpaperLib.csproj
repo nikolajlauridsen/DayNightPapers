@@ -58,5 +58,11 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SunTime\SunData.csproj">
+      <Project>{742cffed-d23c-448c-bdab-c9ff09281b61}</Project>
+      <Name>SunData</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

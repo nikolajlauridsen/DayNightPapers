@@ -13,6 +13,11 @@ namespace WallpaperLib
     {
         private static string _cacheName = @"PaperCache";
 
+        private object dayLock = new object();
+        private object nightLock = new object();
+        private object storeLock = new object();
+        private object pathLock = new object();
+
         public string CacheFolder
         {
             get
@@ -27,16 +32,22 @@ namespace WallpaperLib
         {
             get
             {
-                string dayPaperPath = GetAbsolutePath(Settings.Default.DayPaperName);
-                if (File.Exists(dayPaperPath)) return dayPaperPath;
-                else return null;
+                lock (dayLock)
+                {
+                    string dayPaperPath = GetAbsolutePath(Settings.Default.DayPaperName);
+                    if (File.Exists(dayPaperPath)) return dayPaperPath;
+                    else return null;
+                }
 
             }
             set
             {
-                string newFileName = storePaper(Settings.Default.DayPaperName, value, "_day");
-                Settings.Default.DayPaperName = newFileName;
-                Settings.Default.Save();
+                lock (dayLock)
+                {
+                    string newFileName = storePaper(Settings.Default.DayPaperName, value, "_day");
+                    Settings.Default.DayPaperName = newFileName;
+                    Settings.Default.Save();
+                }
 
             }
         }
@@ -45,33 +56,48 @@ namespace WallpaperLib
         {
             get
             {
-                string nightPaperPath = GetAbsolutePath(Settings.Default.NightPaperName);
-                if (File.Exists(nightPaperPath)) return nightPaperPath;
-                else return null;
+                lock (nightLock)
+                {
+                    string nightPaperPath = GetAbsolutePath(Settings.Default.NightPaperName);
+                    if (File.Exists(nightPaperPath)) return nightPaperPath;
+                    else return null;
+                }
+                
             }
             set
             {
-                string newFileName = storePaper(Settings.Default.NightPaperName, value, "_night");
-                Settings.Default.NightPaperName = newFileName;
-                Settings.Default.Save();
+                lock (nightLock)
+                {
+                    string newFileName = storePaper(Settings.Default.NightPaperName, value, "_night");
+                    Settings.Default.NightPaperName = newFileName;
+                    Settings.Default.Save();
+                }
             }
         }
 
         private string storePaper(string oldFileName, string newPath, string fileSuffix)
         {
-            // Delete old cached wallpaper if it exists
-            string oldPaperPath = Path.Combine(Environment.CurrentDirectory, CacheFolder, oldFileName);
-            if (File.Exists(oldPaperPath)) File.Delete(oldPaperPath);
+            lock (storeLock)
+            {
+                // Delete old cached wallpaper if it exists
+                string oldPaperPath = Path.Combine(Environment.CurrentDirectory, CacheFolder, oldFileName);
+                if (File.Exists(oldPaperPath)) File.Delete(oldPaperPath);
 
-            // Copy new wallpaper
-            string newFileName = Path.GetFileNameWithoutExtension(newPath) + fileSuffix + Path.GetExtension(newPath);
-            File.Copy(newPath, Path.Combine(Environment.CurrentDirectory, CacheFolder, newFileName));
-            return newFileName;
+                // Copy new wallpaper
+                string newFileName = Path.GetFileNameWithoutExtension(newPath) + fileSuffix + Path.GetExtension(newPath);
+                File.Copy(newPath, Path.Combine(Environment.CurrentDirectory, CacheFolder, newFileName));
+                return newFileName;
+            }
+            
         }
 
         private string GetAbsolutePath(string fileName)
         {
-            return Path.Combine(Environment.CurrentDirectory, CacheFolder, fileName);
+            lock (pathLock)
+            {
+                return Path.Combine(Environment.CurrentDirectory, CacheFolder, fileName);
+            }
+            
         }
     }
 }

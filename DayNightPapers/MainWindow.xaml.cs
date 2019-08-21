@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DayNightPapers.Properties;
 using Microsoft.Win32;
 
 using WallpaperLib;
@@ -24,6 +26,7 @@ namespace DayNightPapers
     
     public partial class MainWindow : Window
     {
+        // TODO: Display sun data in UI
         private DayNightSwitcher switcher = new DayNightSwitcher();
         private System.Windows.Forms.NotifyIcon trayIcon;
 
@@ -40,6 +43,10 @@ namespace DayNightPapers
             else DayPaperLocation.Content = "Please select a wallpaper";
             if (switcher.NightPaper != null) NightPaperLocation.Content = Path.GetFileName(switcher.NightPaper);
             else NightPaperLocation.Content = "Please select a wallpaper";
+
+            StartCheck.IsChecked = Settings.Default.LaunchOnStart;
+            StartCheck.Checked += registerStartup;
+            StartCheck.Unchecked += unregisterStartup;
 
             switcher.Start();
         }
@@ -82,6 +89,34 @@ namespace DayNightPapers
             }
 
             return null;
+        }
+
+        private void registerStartup(object sender, EventArgs e)
+        {
+            if (Settings.Default.LaunchOnStart == false)
+            {
+                using (RegistryKey rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true)) {
+                    rk.SetValue("DayNightPapers", "\"" + Assembly.GetEntryAssembly().Location + "\"");
+                }
+
+                Settings.Default.LaunchOnStart = true;
+                Settings.Default.Save();
+            }
+            
+        }
+
+        private void unregisterStartup(object sender, EventArgs e)
+        {
+            if (Settings.Default.LaunchOnStart)
+            {
+                using (RegistryKey rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true)) {
+                    rk.DeleteValue("DayNightPapers", false);
+                }
+
+                Settings.Default.LaunchOnStart = false;
+                Settings.Default.Save();
+            }
+            
         }
 
         // Minimize to tray stuff

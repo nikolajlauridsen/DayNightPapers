@@ -18,5 +18,7 @@
             <Label Name="NightPaperLocation">Please select a wallpaper</Label>
             <Button Name="NightPickerBtn" Click="NightPickerBtn_Click" >Select wallpaper</Button>
         </WrapPanel>
+
+        <CheckBox Name="StartCheck" Margin="10">Run at startup</CheckBox>
     </DockPanel>
 </Window>

@@ -40,6 +40,8 @@ namespace DayNightPapers
             else DayPaperLocation.Content = "Please select a wallpaper";
             if (switcher.NightPaper != null) NightPaperLocation.Content = Path.GetFileName(switcher.NightPaper);
             else NightPaperLocation.Content = "Please select a wallpaper";
+
+            switcher.Start();
         }
 
         private void DayPickerBtn_Click(object sender, RoutedEventArgs e)
@@ -72,7 +74,7 @@ namespace DayNightPapers
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.DefaultExt = ".png";
-            dialog.Filter = "PNG image files (*.png)|*.png";
+            dialog.Filter = "Image files (*.png,*.jpeg)|*.png;*.jpeg;*.jpg";
             bool? result = dialog.ShowDialog();
 
             if (result == true) {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -20,6 +21,8 @@ namespace WallpaperLib
         private object sunriseLock = new object();
         private object sunsetLock = new object();
         private object actionLock = new object();
+
+        private bool running = false;
 
         public DayNightSwitcher()
         {
@@ -60,10 +63,33 @@ namespace WallpaperLib
             }
         }
 
+        public int CheckDelay
+        {
+            set => _checkSpan = new TimeSpan(0, 0, value);
+        }
+
+        private TimeSpan _checkSpan = new TimeSpan(0,0,60);
+
         public void ForcePaperCheck()
         {
-            Thread thread = new Thread(paperCheckAction);
+            Thread thread = new Thread(new ThreadStart(PaperCheck));
             thread.Start();
+        }
+
+        public void Start()
+        {
+            if (running == false)
+            {
+                running = true;
+                Thread thread = new Thread(paperCheckWorker);
+                thread.IsBackground = true;
+                thread.Start();
+            }
+        }
+
+        public void Stop()
+        {
+            if (running) running = false;
         }
 
         private void paperCheckAction()
@@ -79,6 +105,15 @@ namespace WallpaperLib
                     changer.SetWallpaper(store.NightPaper);
                 }
             } 
+        }
+
+        private void paperCheckWorker()
+        {
+            while (running)
+            {
+                PaperCheck();
+                Thread.Sleep(_checkSpan);
+            }
         }
     }
 }

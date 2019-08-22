@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DayNightPapers"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" StateChanged="Window_StateChanged">
+        Title="DayNightPapers" Height="450" Width="800" StateChanged="Window_StateChanged" WindowStyle="SingleBorderWindow" ResizeMode="CanMinimize">
     <DockPanel>
         <Label DockPanel.Dock="Top" Margin="10,0,0,-10">Day wallpaper</Label>
         <WrapPanel DockPanel.Dock="Top" Margin="10">

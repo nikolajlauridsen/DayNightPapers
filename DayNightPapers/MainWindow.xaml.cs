@@ -36,7 +36,8 @@ namespace DayNightPapers
 
             // TODO: Change icon and embed in exe, possibly stop using forms if I can find a decent way around it
             trayIcon = new System.Windows.Forms.NotifyIcon();
-            trayIcon.Icon = new System.Drawing.Icon("icon.ico");
+            trayIcon.Icon = Properties.Resources.icon;
+
             trayIcon.MouseDoubleClick += trayIcon_MouseDoubleClick;
 
             if (switcher.DayPaper != null) DayPaperLocation.Content = Path.GetFileName(switcher.DayPaper);

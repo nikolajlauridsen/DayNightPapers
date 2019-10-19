@@ -89,7 +89,6 @@ namespace WallpaperLib
 
         private void paperCheckAction()
         {
-            // TODO: Refresh sun data if it's no longer the same day
             lock (actionLock)
             {
                 DateTime currentTime = DateTime.Now;

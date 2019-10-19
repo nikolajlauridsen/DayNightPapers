@@ -49,7 +49,7 @@ namespace SunData
             builder.Append("&lng=");
             builder.Append(Longtitude);
             // Add date
-            builder.Append("&date=today");
+            builder.Append($"&date={DateTime.Now.ToString("yyyy-MM-dd")}");
             // Add formatted
             builder.Append("&formatted=0");
             
@@ -69,7 +69,9 @@ namespace SunData
         
         private ApiResult getApiResult()
         {
-            if (_apiResult == null)
+            // Fetch API data for current day if it has not been fetched yet
+            // or the time hast passed sunset and it's no longer the same date
+            if (_apiResult == null || (DateTime.Now > _apiResult.results.Sunset && DateTime.Now.Date != _apiResult.results.Sunset.Date))
             {
                 string jsonString = getJsonString();
                 MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString));
@@ -85,5 +87,6 @@ namespace SunData
                 return _apiResult;
             }
         }
+
     }
 }

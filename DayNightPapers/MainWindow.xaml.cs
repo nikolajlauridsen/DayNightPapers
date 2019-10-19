@@ -84,11 +84,13 @@ namespace DayNightPapers
         {
             if (this.WindowState == WindowState.Minimized) {
                 this.ShowInTaskbar = false;
-                this.Focus();
+                this.WindowStyle = WindowStyle.ToolWindow;
                 trayIcon.Visible = true;
             } else if (this.WindowState == WindowState.Normal) {
                 trayIcon.Visible = false;
                 this.ShowInTaskbar = true;
+                this.WindowStyle = WindowStyle.SingleBorderWindow;
+                this.Topmost = true;
             }
         }
     }

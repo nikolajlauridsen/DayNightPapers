@@ -45,9 +45,6 @@ namespace DayNightPapers
             if (switcher.NightPaper != null) NightPaperLocation.Content = Path.GetFileName(switcher.NightPaper);
             else NightPaperLocation.Content = "Please select a wallpaper";
 
-            StartCheck.IsChecked = Settings.Default.LaunchOnStart;
-            StartCheck.Checked += registerStartup;
-            StartCheck.Unchecked += unregisterStartup;
 
             switcher.Start();
         }
@@ -90,34 +87,6 @@ namespace DayNightPapers
             }
 
             return null;
-        }
-
-        private void registerStartup(object sender, EventArgs e)
-        {
-            if (Settings.Default.LaunchOnStart == false)
-            {
-                using (RegistryKey rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true)) {
-                    rk.SetValue("DayNightPapers", "\"" + Assembly.GetEntryAssembly().Location + "\"");
-                }
-
-                Settings.Default.LaunchOnStart = true;
-                Settings.Default.Save();
-            }
-            
-        }
-
-        private void unregisterStartup(object sender, EventArgs e)
-        {
-            if (Settings.Default.LaunchOnStart)
-            {
-                using (RegistryKey rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true)) {
-                    rk.DeleteValue("DayNightPapers", false);
-                }
-
-                Settings.Default.LaunchOnStart = false;
-                Settings.Default.Save();
-            }
-            
         }
 
         // Minimize to tray stuff

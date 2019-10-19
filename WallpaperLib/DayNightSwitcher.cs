@@ -108,9 +108,15 @@ namespace WallpaperLib
                 DateTime currentTime = DateTime.Now;
 
                 if (currentTime >= SunRise && currentTime < SunSet) {
-                    changer.SetWallpaper(store.DayPaper);
+                    if (!string.IsNullOrEmpty(store.DayPaper))
+                    {
+                        changer.SetWallpaper(store.DayPaper);
+                    }
                 } else {
-                    changer.SetWallpaper(store.NightPaper);
+                    if (!string.IsNullOrEmpty(store.NightPaper))
+                    {
+                        changer.SetWallpaper(store.NightPaper);
+                    }
                 }
             } 
         }

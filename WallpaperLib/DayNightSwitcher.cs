@@ -5,6 +5,8 @@ using SunData;
 
 namespace WallpaperLib
 {
+
+    // This is basically a facade/controller.
     public class DayNightSwitcher
     {
         private WallpaperStore store = new WallpaperStore();
@@ -34,6 +36,18 @@ namespace WallpaperLib
         {
             get => store.NightPaper;
             set => store.NightPaper = value;
+        }
+
+        public double Latitude
+        {
+            get => sunTime.Latitude;
+            set => sunTime.Latitude = value;
+        }
+
+        public double Longtitude
+        {
+            get => sunTime.Longtitude;
+            set => sunTime.Longtitude = value;
         }
 
         public DateTime SunRise

@@ -15,6 +15,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DayNightPapers.Properties;
+using System.Net;
+
+using WallpaperLib;
 
 
 namespace DayNightPapers
@@ -36,8 +39,38 @@ namespace DayNightPapers
 
             trayIcon.MouseDoubleClick += trayIcon_MouseDoubleClick;
 
-            MainPage mainPage = new MainPage();
+            DayNightSwitcher switcher = new DayNightSwitcher();
+            if(switcher.Latitude == 0 && switcher.Longtitude == 0)
+            {
+                OpenSetupPage(switcher);
+            } else {
+                OpenMainPage(switcher);
+            }
+            
+            
+        }
+
+        public void OpenMainPage(DayNightSwitcher switcher)
+        {
+            try
+            {
+                // TODO: Rewrite this, if you have bad internet og server takes a long time to answer
+                // then this wil give the appearance of the program crashing
+                DateTime sunrise = switcher.SunRise;
+            }
+            catch(WebException we)
+            {
+                MessageBox.Show("Got an error from suntime server, probably bad coords, navigating you to the setup page.");
+                OpenSetupPage(switcher);
+                return;
+            }
+            MainPage mainPage = new MainPage(switcher);
             MainFrame.Navigate(mainPage);
+        }
+
+        public void OpenSetupPage(DayNightSwitcher switcher)
+        {
+            MainFrame.Navigate(new SetupPage(switcher, OpenMainPage));
         }
 
         // Minimize to tray stuff

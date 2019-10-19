@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="Latitude" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">55.567231</Value>
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="Longtitude" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">9.754025</Value>
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

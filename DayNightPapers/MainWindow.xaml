@@ -7,17 +7,8 @@
         mc:Ignorable="d"
         Title="DayNightPapers" Height="450" Width="800" StateChanged="Window_StateChanged" WindowStyle="SingleBorderWindow" ResizeMode="CanMinimize">
     <DockPanel>
-        <Label DockPanel.Dock="Top" Margin="10,0,0,-10">Day wallpaper</Label>
-        <WrapPanel DockPanel.Dock="Top" Margin="10">
-            <Label Name="DayPaperLocation">Please select a wallpaper</Label>
-            <Button Name="DayPickerBtn" Click="DayPickerBtn_Click">Select wallpaper</Button>
-        </WrapPanel>
-
-        <Label DockPanel.Dock="Top" Margin="10,10,0,-10">Night wallpaper</Label>
-        <WrapPanel DockPanel.Dock="Top" Margin="10">
-            <Label Name="NightPaperLocation">Please select a wallpaper</Label>
-            <Button Name="NightPickerBtn" Click="NightPickerBtn_Click" >Select wallpaper</Button>
-        </WrapPanel>
-
+        <Frame Name="MainFrame">
+            
+        </Frame>
     </DockPanel>
 </Window>

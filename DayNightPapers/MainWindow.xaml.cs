@@ -15,10 +15,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DayNightPapers.Properties;
-using Microsoft.Win32;
-
-using WallpaperLib;
-using Path = System.IO.Path;
 
 
 namespace DayNightPapers
@@ -27,7 +23,7 @@ namespace DayNightPapers
     public partial class MainWindow : Window
     {
         // TODO: Display sun data in UI
-        private DayNightSwitcher switcher = new DayNightSwitcher();
+        
         private System.Windows.Forms.NotifyIcon trayIcon;
 
         public MainWindow()
@@ -40,53 +36,8 @@ namespace DayNightPapers
 
             trayIcon.MouseDoubleClick += trayIcon_MouseDoubleClick;
 
-            if (switcher.DayPaper != null) DayPaperLocation.Content = Path.GetFileName(switcher.DayPaper);
-            else DayPaperLocation.Content = "Please select a wallpaper";
-            if (switcher.NightPaper != null) NightPaperLocation.Content = Path.GetFileName(switcher.NightPaper);
-            else NightPaperLocation.Content = "Please select a wallpaper";
-
-
-            switcher.Start();
-        }
-
-        private void DayPickerBtn_Click(object sender, RoutedEventArgs e)
-        {
-            string paperPath = selectImage();
-            if (paperPath != null)
-            {
-                switcher.DayPaper = paperPath;
-                switcher.ForcePaperCheck();
-
-                DayPaperLocation.Content = Path.GetFileName(switcher.DayPaper); ;
-                
-            }
-            
-        }
-
-        private void NightPickerBtn_Click(object sender, RoutedEventArgs e)
-        {
-            string paperPath = selectImage();
-            if (paperPath != null)
-            {
-                switcher.NightPaper = paperPath;
-                switcher.ForcePaperCheck();
-
-                NightPaperLocation.Content = Path.GetFileName(switcher.NightPaper);
-            }
-        }
-
-        private string selectImage()
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.DefaultExt = ".png";
-            dialog.Filter = "Image files (*.png,*.jpeg)|*.png;*.jpeg;*.jpg";
-            bool? result = dialog.ShowDialog();
-
-            if (result == true) {
-                return dialog.FileName;
-            }
-
-            return null;
+            MainPage mainPage = new MainPage();
+            MainFrame.Navigate(mainPage);
         }
 
         // Minimize to tray stuff

@@ -98,6 +98,7 @@ namespace DayNightPapers
                 this.ShowInTaskbar = true;
                 this.WindowStyle = WindowStyle.SingleBorderWindow;
                 this.Topmost = true;
+                this.Topmost = false;
             }
         }
     }

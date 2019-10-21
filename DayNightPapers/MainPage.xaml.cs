@@ -35,9 +35,16 @@ namespace DayNightPapers
 
             _switcher = switcher;
 
-            if (switcher.DayPaper != null) DayPaperLocation.Content = Path.GetFileName(switcher.DayPaper);
+            if (switcher.DayPaper != null) { 
+                DayPaperLocation.Content = Path.GetFileName(switcher.DayPaper);
+                DayImage.Source = getImageSource(switcher.DayPaper);
+            }
             else DayPaperLocation.Content = "Please select a wallpaper";
-            if (switcher.NightPaper != null) NightPaperLocation.Content = Path.GetFileName(switcher.NightPaper);
+
+            if (switcher.NightPaper != null) { 
+                NightPaperLocation.Content = Path.GetFileName(switcher.NightPaper);
+                NightImage.Source = getImageSource(switcher.NightPaper);
+            }
             else NightPaperLocation.Content = "Please select a wallpaper";
 
             MinimizeAtStartCheck.IsChecked = Settings.Default.Minimize;
@@ -60,11 +67,12 @@ namespace DayNightPapers
             string paperPath = selectImage();
             if (paperPath != null)
             {
+                DayImage.Source = null;
                 _switcher.DayPaper = paperPath;
                 _switcher.ForcePaperCheck();
 
                 DayPaperLocation.Content = Path.GetFileName(_switcher.DayPaper); ;
-
+                DayImage.Source = getImageSource(_switcher.DayPaper);
             }
 
         }
@@ -74,11 +82,23 @@ namespace DayNightPapers
             string paperPath = selectImage();
             if (paperPath != null)
             {
+                NightImage.Source = null;
                 _switcher.NightPaper = paperPath;
                 _switcher.ForcePaperCheck();
 
                 NightPaperLocation.Content = Path.GetFileName(_switcher.NightPaper);
+                NightImage.Source = getImageSource(_switcher.NightPaper);
             }
+        }
+
+        private BitmapImage getImageSource(string path)
+        {
+            BitmapImage img = new BitmapImage();
+            img.BeginInit();
+            img.UriSource = new Uri(path);
+            img.CacheOption = BitmapCacheOption.OnLoad;
+            img.EndInit();
+            return img;
         }
 
         private string selectImage()

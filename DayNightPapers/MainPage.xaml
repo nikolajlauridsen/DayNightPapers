@@ -21,5 +21,9 @@
             <Button Name="NightPickerBtn" Click="NightPickerBtn_Click" >Select wallpaper</Button>
         </WrapPanel>
 
+        <WrapPanel>
+            <Label VerticalAlignment="Center">Minimize at start</Label>
+            <CheckBox VerticalAlignment="Center" Name="MinimizeAtStartCheck"></CheckBox>
+        </WrapPanel>
     </DockPanel>
 </Page>

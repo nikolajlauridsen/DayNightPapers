@@ -36,8 +36,9 @@ namespace DayNightPapers
             // TODO: Change icon and embed in exe, possibly stop using forms if I can find a decent way around it
             trayIcon = new System.Windows.Forms.NotifyIcon();
             trayIcon.Icon = Properties.Resources.icon;
-
             trayIcon.MouseDoubleClick += trayIcon_MouseDoubleClick;
+
+            this.Loaded += LoadedEventHandler;
 
             DayNightSwitcher switcher = new DayNightSwitcher();
             if(switcher.Latitude == 0 && switcher.Longtitude == 0)
@@ -46,8 +47,14 @@ namespace DayNightPapers
             } else {
                 OpenMainPage(switcher);
             }
-            
-            
+        }
+
+        public void LoadedEventHandler(object sender, EventArgs e)
+        {
+            if (Settings.Default.Minimize)
+            {
+                this.WindowState = WindowState.Minimized;
+            }
         }
 
         public void OpenMainPage(DayNightSwitcher switcher)

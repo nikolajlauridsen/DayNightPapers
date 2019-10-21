@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DayNightPapers.Properties;
+
 
 using WallpaperLib;
 using Path = System.IO.Path;
@@ -38,6 +40,17 @@ namespace DayNightPapers
             if (switcher.NightPaper != null) NightPaperLocation.Content = Path.GetFileName(switcher.NightPaper);
             else NightPaperLocation.Content = "Please select a wallpaper";
 
+            MinimizeAtStartCheck.IsChecked = Settings.Default.Minimize;
+            MinimizeAtStartCheck.Checked += (sender, e) => {
+                Settings.Default.Minimize = true;
+                Settings.Default.Save();
+                };
+
+            MinimizeAtStartCheck.Unchecked += (sender, e) =>
+            {
+                Settings.Default.Minimize = false;
+                Settings.Default.Save();
+            };
 
             switcher.Start();
         }

@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DayNightPapers.Properties;
 
-
+using SunData; 
 using WallpaperLib;
 using Path = System.IO.Path;
 using Microsoft.Win32;
@@ -59,7 +59,16 @@ namespace DayNightPapers
                 Settings.Default.Save();
             };
 
+            switcher.SunDataChanged += SunTimeChanged;
+
             switcher.Start();
+        }
+
+        private void SunTimeChanged(SunTimeData newData)
+        {
+            Dispatcher.Invoke(() => { 
+                // UI code here....
+            });
         }
 
         private void DayPickerBtn_Click(object sender, RoutedEventArgs e)

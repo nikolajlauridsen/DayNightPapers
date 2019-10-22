@@ -51,6 +51,8 @@
     </Compile>
     <Compile Include="SunTimeData.cs" />
     <Compile Include="SunTime.cs" />
+    <Compile Include="SunTimePublisher.cs" />
+    <Compile Include="SunTimeSubscriber.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -7,13 +7,14 @@ namespace WallpaperLib
 {
 
     // This is basically a facade/controller.
-    public class DayNightSwitcher
+    public class DayNightSwitcher: SunTimeSubscriber
     {
         private WallpaperStore store = new WallpaperStore();
         private WallpaperChanger changer = new WallpaperChanger();
         private SunTime sunTime = new SunTime();
 
         public Action PaperCheck;
+        public event Action<SunTimeData> SunDataChanged;
 
         private object sunriseLock = new object();
         private object sunsetLock = new object();
@@ -128,6 +129,11 @@ namespace WallpaperLib
                 PaperCheck();
                 Thread.Sleep(_checkSpan);
             }
+        }
+
+        public void SunTimeChanged(SunTimeData data)
+        {
+            SunDataChanged?.Invoke(data);
         }
     }
 }

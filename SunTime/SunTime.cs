@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Runtime.Serialization.Json;
@@ -7,8 +8,9 @@ using SunData.Properties;
 
 namespace SunData
 {
-    public class SunTime
+    public class SunTime : SunTimePublisher
     {
+        private List<SunTimeSubscriber> subscribers = new List<SunTimeSubscriber>();
         private static string apiUrl = @"https://api.sunrise-sunset.org/json";
         public double Latitude
         {
@@ -80,6 +82,7 @@ namespace SunData
                 data = serializer.ReadObject(ms) as ApiResult;
                 ms.Close();
                 _apiResult = data;
+                SunTimeChanged();
                 return data;
             }
             else
@@ -88,5 +91,17 @@ namespace SunData
             }
         }
 
+        public void RegisterSubscriber(SunTimeSubscriber subscriber)
+        {
+            subscribers.Add(subscriber);
+        }
+
+        public void SunTimeChanged()
+        {
+            foreach(SunTimeSubscriber sub in subscribers)
+            {
+                sub.SunTimeChanged(SunTimeData);
+            }
+        }
     }
 }

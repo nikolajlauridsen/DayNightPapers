@@ -25,6 +25,7 @@ namespace WallpaperLib
         public DayNightSwitcher()
         {
             PaperCheck += paperCheckAction;
+            sunTime.RegisterSubscriber(this);
         }
 
         public string DayPaper

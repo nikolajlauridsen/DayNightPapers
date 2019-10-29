@@ -55,6 +55,9 @@ namespace DayNightPapers
                 Settings.Default.Save();
             };
 
+            SunriseLabel.Content = _switcher.SunRise.ToString("H:mm");
+            SunsetLabel.Content = _switcher.SunSet.ToString("H:mm");
+
             switcher.SunDataChanged += SunTimeChanged;
 
             switcher.Start();
@@ -63,7 +66,8 @@ namespace DayNightPapers
         private void SunTimeChanged(SunTimeData newData)
         {
             Dispatcher.Invoke(() => { 
-                // UI code here....
+                SunriseLabel.Content = newData.Sunrise.ToString("H:mm");
+                SunsetLabel.Content = newData.Sunset.ToString("H:mm");
             });
         }
 

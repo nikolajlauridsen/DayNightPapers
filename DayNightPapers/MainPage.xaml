@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:DayNightPapers"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MainPage">
+      Title="MainPage" Background="White">
 
     <DockPanel>
         <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center">
@@ -22,9 +22,21 @@
                 <Button Name="NightPickerBtn" Click="NightPickerBtn_Click" Margin="0,5,0,0">Select wallpaper</Button>
             </StackPanel>
         </WrapPanel>
+
+        <StackPanel DockPanel.Dock="Top" Margin="15">
+            <WrapPanel>
+                <Label>Sunrise: </Label>
+                <Label Name="SunriseLabel" Margin="-5,0,0,0">7:55</Label>
+            </WrapPanel>
+
+            <WrapPanel>
+                <Label>Sunset:</Label>
+                <Label Name="SunsetLabel"  Margin="-5,0,0,0">7:55</Label>
+            </WrapPanel>
+        </StackPanel>
         
 
-        <WrapPanel DockPanel.Dock="Bottom" Margin="10">
+        <WrapPanel DockPanel.Dock="Top" Margin="15">
             <Label VerticalAlignment="Center">Minimize at start</Label>
             <CheckBox VerticalAlignment="Center" Name="MinimizeAtStartCheck"></CheckBox>
         </WrapPanel>

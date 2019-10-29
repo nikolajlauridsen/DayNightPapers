@@ -13,15 +13,13 @@
             <StackPanel Margin="0,10,30,0">
                 <Label Margin="0,0,0,0">Day wallpaper</Label>
                 <Image Name="DayImage" Height="200" Width="355"></Image>
-                <Label Name="DayPaperLocation">Please select a wallpaper</Label>
-                <Button Name="DayPickerBtn" Click="DayPickerBtn_Click">Select wallpaper</Button>
+                <Button Name="DayPickerBtn" Click="DayPickerBtn_Click" Margin="0,5,0,0">Select wallpaper</Button>
             </StackPanel>
 
             <StackPanel>
                 <Label Margin="0,10,0,0">Night wallpaper</Label>
                 <Image Name="NightImage" Height="200" Width="355"></Image>
-                <Label Name="NightPaperLocation">Please select a wallpaper</Label>
-                <Button Name="NightPickerBtn" Click="NightPickerBtn_Click" >Select wallpaper</Button>
+                <Button Name="NightPickerBtn" Click="NightPickerBtn_Click" Margin="0,5,0,0">Select wallpaper</Button>
             </StackPanel>
         </WrapPanel>
         

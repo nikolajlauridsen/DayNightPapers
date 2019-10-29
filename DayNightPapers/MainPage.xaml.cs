@@ -36,16 +36,12 @@ namespace DayNightPapers
             _switcher = switcher;
 
             if (switcher.DayPaper != null) { 
-                DayPaperLocation.Content = Path.GetFileName(switcher.DayPaper);
                 DayImage.Source = getImageSource(switcher.DayPaper);
             }
-            else DayPaperLocation.Content = "Please select a wallpaper";
 
             if (switcher.NightPaper != null) { 
-                NightPaperLocation.Content = Path.GetFileName(switcher.NightPaper);
                 NightImage.Source = getImageSource(switcher.NightPaper);
             }
-            else NightPaperLocation.Content = "Please select a wallpaper";
 
             MinimizeAtStartCheck.IsChecked = Settings.Default.Minimize;
             MinimizeAtStartCheck.Checked += (sender, e) => {
@@ -80,7 +76,6 @@ namespace DayNightPapers
                 _switcher.DayPaper = paperPath;
                 _switcher.ForcePaperCheck();
 
-                DayPaperLocation.Content = Path.GetFileName(_switcher.DayPaper); ;
                 DayImage.Source = getImageSource(_switcher.DayPaper);
             }
 
@@ -95,7 +90,6 @@ namespace DayNightPapers
                 _switcher.NightPaper = paperPath;
                 _switcher.ForcePaperCheck();
 
-                NightPaperLocation.Content = Path.GetFileName(_switcher.NightPaper);
                 NightImage.Source = getImageSource(_switcher.NightPaper);
             }
         }

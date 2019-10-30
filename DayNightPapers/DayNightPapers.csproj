@@ -126,5 +126,11 @@
   <ItemGroup>
     <Resource Include="icon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\moon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

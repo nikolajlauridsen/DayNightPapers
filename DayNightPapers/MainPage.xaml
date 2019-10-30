@@ -11,30 +11,25 @@
     <DockPanel>
         <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center">
             <StackPanel Margin="0,10,30,0">
-                <Label Margin="0,0,0,0">Day wallpaper</Label>
+                <WrapPanel>
+                    <Image Name="DayLabelImage" Height="20" Width="20" HorizontalAlignment="Left" Margin="3,0,0,5"></Image>
+                    <Label Name="SunriseLabel"  Margin="0,-3,0,0">7:55</Label>
+                </WrapPanel>
+                
                 <Image Name="DayImage" Height="200" Width="355"></Image>
                 <Button Name="DayPickerBtn" Click="DayPickerBtn_Click" Margin="0,5,0,0">Select wallpaper</Button>
             </StackPanel>
 
-            <StackPanel>
-                <Label Margin="0,10,0,0">Night wallpaper</Label>
+            <StackPanel Margin="0,10,0,0">
+                <WrapPanel>
+                    <Image Name="NightLabelImage" Height="20" Width="20" HorizontalAlignment="Left" Margin="3,0,0,5"></Image>
+                    <Label Name="SunsetLabel"  Margin="0,-3,0,0">7:55</Label>
+                </WrapPanel>
+                
                 <Image Name="NightImage" Height="200" Width="355"></Image>
                 <Button Name="NightPickerBtn" Click="NightPickerBtn_Click" Margin="0,5,0,0">Select wallpaper</Button>
             </StackPanel>
         </WrapPanel>
-
-        <StackPanel DockPanel.Dock="Top" Margin="15">
-            <WrapPanel>
-                <Label>Sunrise: </Label>
-                <Label Name="SunriseLabel" Margin="-5,0,0,0">7:55</Label>
-            </WrapPanel>
-
-            <WrapPanel>
-                <Label>Sunset:</Label>
-                <Label Name="SunsetLabel"  Margin="-5,0,0,0">7:55</Label>
-            </WrapPanel>
-        </StackPanel>
-        
 
         <WrapPanel DockPanel.Dock="Top" Margin="15">
             <Label VerticalAlignment="Center">Minimize at start</Label>

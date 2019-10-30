@@ -18,6 +18,9 @@ using SunData;
 using WallpaperLib;
 using Path = System.IO.Path;
 using Microsoft.Win32;
+using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace DayNightPapers
 {
@@ -42,6 +45,9 @@ namespace DayNightPapers
             if (switcher.NightPaper != null) { 
                 NightImage.Source = getImageSource(switcher.NightPaper);
             }
+
+            DayLabelImage.Source = BitmapToImage(Properties.Resources.sun, ImageFormat.Png);
+            NightLabelImage.Source = BitmapToImage(Properties.Resources.moon, ImageFormat.Png);
 
             MinimizeAtStartCheck.IsChecked = Settings.Default.Minimize;
             MinimizeAtStartCheck.Checked += (sender, e) => {
@@ -106,6 +112,21 @@ namespace DayNightPapers
             img.CacheOption = BitmapCacheOption.OnLoad;
             img.EndInit();
             return img;
+        }
+
+        private BitmapImage BitmapToImage(Bitmap bitmap, ImageFormat format)
+        {
+            using(MemoryStream memory = new MemoryStream())
+            {
+                bitmap.Save(memory,  format);
+                memory.Position = 0;
+                BitmapImage img = new BitmapImage();
+                img.BeginInit();
+                img.StreamSource = memory;
+                img.CacheOption = BitmapCacheOption.OnLoad;
+                img.EndInit();
+                return img;
+            }
         }
 
         private string selectImage()

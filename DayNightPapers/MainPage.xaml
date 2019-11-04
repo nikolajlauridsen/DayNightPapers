@@ -13,7 +13,7 @@
             <StackPanel Margin="0,10,30,0">
                 <WrapPanel>
                     <Image Name="DayLabelImage" Height="20" Width="20" HorizontalAlignment="Left" Margin="3,0,0,5"></Image>
-                    <Label Name="SunriseLabel"  Margin="0,-3,0,0">7:55</Label>
+                    <Label Name="SunriseLabel"  Margin="0,-6,0,0" Style="{StaticResource SmallText}">7:55</Label>
                 </WrapPanel>
                 
                 <Image Name="DayImage" Height="200" Width="355"></Image>
@@ -23,7 +23,7 @@
             <StackPanel Margin="0,10,0,0">
                 <WrapPanel>
                     <Image Name="NightLabelImage" Height="20" Width="20" HorizontalAlignment="Left" Margin="3,0,0,5"></Image>
-                    <Label Name="SunsetLabel"  Margin="0,-3,0,0">7:55</Label>
+                    <Label Name="SunsetLabel"  Margin="0,-6,0,0" Style="{StaticResource SmallText}">7:55</Label>
                 </WrapPanel>
                 
                 <Image Name="NightImage" Height="200" Width="355"></Image>
@@ -32,8 +32,8 @@
         </WrapPanel>
 
         <WrapPanel DockPanel.Dock="Top" Margin="15">
-            <Label VerticalAlignment="Center">Minimize at start</Label>
-            <CheckBox Style="{StaticResource FancyCheck}" VerticalAlignment="Center" Name="MinimizeAtStartCheck"></CheckBox>
+            <Label Style="{StaticResource SmallText}" VerticalAlignment="Center">Minimize at start</Label>
+            <CheckBox Style="{StaticResource FancyCheck}" VerticalAlignment="Center" Margin="0,4,0,0" Name="MinimizeAtStartCheck"></CheckBox>
         </WrapPanel>
     </DockPanel>
 </Page>

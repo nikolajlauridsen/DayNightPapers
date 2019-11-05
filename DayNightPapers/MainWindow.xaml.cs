@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using DayNightPapers.Properties;
 using System.Net;
 
+using Hardcodet.Wpf.TaskbarNotification;
 using WallpaperLib;
 
 
@@ -28,6 +29,7 @@ namespace DayNightPapers
         // TODO: Display sun data in UI
         
         private System.Windows.Forms.NotifyIcon trayIcon;
+        private ContextMenu contextMenu;
 
         public MainWindow()
         {
@@ -48,6 +50,12 @@ namespace DayNightPapers
             } else {
                 OpenMainPage(switcher);
             }
+
+            contextMenu = CreateContextMenu();
+            contextMenu.LostFocus += (sender, buttonvars) =>
+            {
+                contextMenu.IsOpen = false;
+            };
         }
 
         public void LoadedEventHandler(object sender, EventArgs e)
@@ -95,9 +103,23 @@ namespace DayNightPapers
                 {
                     this.WindowState = WindowState.Minimized;
                 }
+            } else if(e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                contextMenu.IsOpen = true;
+                contextMenu.StaysOpen = false;
             }
-            
-            
+        }
+
+        private ContextMenu CreateContextMenu()
+        {
+            ContextMenu contextMenu = new ContextMenu();
+            MenuItem closeItem = new MenuItem();
+            closeItem.Click += (closeSender, args) => this.Close();
+            closeItem.Header = "Close program";
+            contextMenu.Items.Add(closeItem);
+            contextMenu.LostKeyboardFocus += (fSender, e) => contextMenu.IsOpen = false;
+            // contextMenu.LostFocus += (focus, e) => contextMenu.IsOpen = false;
+            return contextMenu;
         }
 
         private void Window_StateChanged(object sender, EventArgs e)

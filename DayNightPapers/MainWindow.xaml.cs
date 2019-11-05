@@ -36,7 +36,7 @@ namespace DayNightPapers
             // TODO: Change icon and embed in exe, possibly stop using forms if I can find a decent way around it
             trayIcon = new System.Windows.Forms.NotifyIcon();
             trayIcon.Icon = Properties.Resources.icon;
-            trayIcon.MouseDoubleClick += trayIcon_MouseDoubleClick;
+            trayIcon.MouseClick += trayIcon_MouseDoubleClick;
             trayIcon.Visible = true;
 
             this.Loaded += LoadedEventHandler;
@@ -85,7 +85,19 @@ namespace DayNightPapers
         void trayIcon_MouseDoubleClick(object sender,
             System.Windows.Forms.MouseEventArgs e)
         {
-            this.WindowState = WindowState.Normal;
+            if(e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                if (this.WindowState == WindowState.Minimized)
+                {
+                    this.WindowState = WindowState.Normal;
+                }
+                else
+                {
+                    this.WindowState = WindowState.Minimized;
+                }
+            }
+            
+            
         }
 
         private void Window_StateChanged(object sender, EventArgs e)

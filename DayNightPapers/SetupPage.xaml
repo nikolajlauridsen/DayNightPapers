@@ -30,7 +30,7 @@
             <TextBox Width="130" Height="23" Name="Latitude"></TextBox>
         </WrapPanel>
 
-        <Button DockPanel.Dock="Bottom" Width="60" Height="25" Margin="25" Name="SubmitBtn">Submit</Button>
+        <Button DockPanel.Dock="Bottom" Width="100" Height="25" Margin="25" Style="{StaticResource SmallButton}" Name="SubmitBtn">Submit</Button>
         
         <Label DockPanel.Dock="Top"></Label>
     </DockPanel>

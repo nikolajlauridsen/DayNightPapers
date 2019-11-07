@@ -23,12 +23,32 @@ using WallpaperLib;
 
 namespace DayNightPapers
 {
-    
+
+    public class ClickCommand : ICommand
+    {
+        public event EventHandler CanExecuteChanged;
+        public event EventHandler Clicked;
+
+        public ClickCommand(EventHandler click)
+        {
+            Clicked = click;
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return true;
+        }
+
+        public void Execute(object parameter)
+        {
+            Clicked?.Invoke(this, new EventArgs());
+        }
+    }
+
     public partial class MainWindow : Window
     {
         // TODO: Display sun data in UI
         
-        private System.Windows.Forms.NotifyIcon trayIcon;
         private ContextMenu contextMenu;
 
         public MainWindow()
@@ -36,11 +56,11 @@ namespace DayNightPapers
             InitializeComponent();
 
             // TODO: Change icon and embed in exe, possibly stop using forms if I can find a decent way around it
-            trayIcon = new System.Windows.Forms.NotifyIcon();
-            trayIcon.Icon = Properties.Resources.icon;
-            trayIcon.MouseClick += trayIcon_MouseDoubleClick;
-            trayIcon.Visible = true;
-
+            NotifyIcon.Icon = Properties.Resources.icon;
+            NotifyIcon.ContextMenu = CreateContextMenu();
+            NotifyIcon.NoLeftClickDelay = true;
+            NotifyIcon.LeftClickCommand = new ClickCommand(trayIcon_MouseDoubleClick);
+            
             this.Loaded += LoadedEventHandler;
 
             DayNightSwitcher switcher = new DayNightSwitcher();
@@ -90,23 +110,17 @@ namespace DayNightPapers
         }
 
         // Minimize to tray stuff
-        void trayIcon_MouseDoubleClick(object sender,
-            System.Windows.Forms.MouseEventArgs e)
+        void trayIcon_MouseDoubleClick(object sender, EventArgs e)
         {
-            if(e.Button == System.Windows.Forms.MouseButtons.Left)
+            if (this.WindowState == WindowState.Minimized)
             {
-                if (this.WindowState == WindowState.Minimized)
-                {
-                    this.WindowState = WindowState.Normal;
-                }
-                else
-                {
-                    this.WindowState = WindowState.Minimized;
-                }
-            } else if(e.Button == System.Windows.Forms.MouseButtons.Right)
+                this.WindowState = WindowState.Normal;
+                this.Topmost = true;
+                this.Topmost = false;
+            }
+            else
             {
-                contextMenu.IsOpen = true;
-                contextMenu.StaysOpen = false;
+                this.WindowState = WindowState.Minimized;
             }
         }
 
@@ -117,8 +131,6 @@ namespace DayNightPapers
             closeItem.Click += (closeSender, args) => this.Close();
             closeItem.Header = "Close program";
             contextMenu.Items.Add(closeItem);
-            contextMenu.LostKeyboardFocus += (fSender, e) => contextMenu.IsOpen = false;
-            // contextMenu.LostFocus += (focus, e) => contextMenu.IsOpen = false;
             return contextMenu;
         }
 

@@ -45,6 +45,27 @@ namespace DayNightPapers
             }
             else
             {
+                // Try and fetch a result from the API to ensure that the user has internet connection and has proper coordinates
+                try
+                {
+                    // TODO: Rewrite this, if you have bad internet og server takes a long time to answer
+                    // then this wil give the appearance of the program crashing
+                    DateTime sunrise = _switcher.SunRise;
+                }
+                catch (WebException we)
+                {
+                    if (we.Status == WebExceptionStatus.ConnectFailure || we.Status == WebExceptionStatus.NameResolutionFailure)
+                    {
+                        MessageBox.Show("Could not connect to the Sun server, navigating to setup page, click submit when you have regained internet connection");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Got an error from suntime server, probably bad coords, navigating you to the setup page.");
+                    }
+                    OpenSetupPage();
+                    return;
+                }
+
                 OpenMainPage();
                 // Don't minimize if setup page is displayed.
                 if (Settings.Default.Minimize)
@@ -61,18 +82,6 @@ namespace DayNightPapers
         /// </summary>
         public void OpenMainPage()
         {
-            try
-            {
-                // TODO: Rewrite this, if you have bad internet og server takes a long time to answer
-                // then this wil give the appearance of the program crashing
-                DateTime sunrise = _switcher.SunRise;
-            }
-            catch(WebException we)
-            {
-                MessageBox.Show("Got an error from suntime server, probably bad coords, navigating you to the setup page.");
-                OpenSetupPage();
-                return;
-            }
             MainPage mainPage = new MainPage(_switcher);
             MainFrame.Navigate(mainPage);
         }

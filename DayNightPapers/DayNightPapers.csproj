@@ -63,6 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\ClickEventWrapper.cs" />
     <Compile Include="SetupPage.xaml.cs">
       <DependentUpon>SetupPage.xaml</DependentUpon>
     </Compile>
@@ -136,5 +137,6 @@
   <ItemGroup>
     <Resource Include="Images\moon.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

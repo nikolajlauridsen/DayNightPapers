@@ -19,98 +19,71 @@ using System.Net;
 
 using Hardcodet.Wpf.TaskbarNotification;
 using WallpaperLib;
+using DayNightPapers.Helpers;
 
 
 namespace DayNightPapers
 {
-
-    public class ClickCommand : ICommand
-    {
-        public event EventHandler CanExecuteChanged;
-        public event EventHandler Clicked;
-
-        public ClickCommand(EventHandler click)
-        {
-            Clicked = click;
-        }
-
-        public bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        public void Execute(object parameter)
-        {
-            Clicked?.Invoke(this, new EventArgs());
-        }
-    }
-
     public partial class MainWindow : Window
     {
-        // TODO: Display sun data in UI
-        
-        private ContextMenu contextMenu;
-
+        private DayNightSwitcher _switcher;
         public MainWindow()
         {
             InitializeComponent();
 
-            // TODO: Change icon and embed in exe, possibly stop using forms if I can find a decent way around it
-            NotifyIcon.Icon = Properties.Resources.icon;
-            NotifyIcon.ContextMenu = CreateContextMenu();
-            NotifyIcon.NoLeftClickDelay = true;
-            NotifyIcon.LeftClickCommand = new ClickCommand(trayIcon_MouseDoubleClick);
-            
             this.Loaded += LoadedEventHandler;
 
-            DayNightSwitcher switcher = new DayNightSwitcher();
-            if(switcher.Latitude == 0 && switcher.Longtitude == 0)
-            {
-                OpenSetupPage(switcher);
-            } else {
-                OpenMainPage(switcher);
-            }
-
-            contextMenu = CreateContextMenu();
-            contextMenu.LostFocus += (sender, buttonvars) =>
-            {
-                contextMenu.IsOpen = false;
-            };
+            SetupNotifyIcon();
+            _switcher = new DayNightSwitcher();
         }
 
         public void LoadedEventHandler(object sender, EventArgs e)
         {
-            if (Settings.Default.Minimize)
+            if (_switcher.Latitude == 0 && _switcher.Longtitude == 0)
             {
-                this.WindowState = WindowState.Minimized;
+                OpenSetupPage();
             }
+            else
+            {
+                OpenMainPage();
+                // Don't minimize if setup page is displayed.
+                if (Settings.Default.Minimize)
+                {
+                    this.WindowState = WindowState.Minimized;
+                }
+            }
+
         }
 
-        public void OpenMainPage(DayNightSwitcher switcher)
+        /// <summary>
+        /// Opens the main page and navigates the UI to it 
+        /// Will force _switcher to make a request and navigate to Setup if it fails.
+        /// </summary>
+        public void OpenMainPage()
         {
             try
             {
                 // TODO: Rewrite this, if you have bad internet og server takes a long time to answer
                 // then this wil give the appearance of the program crashing
-                DateTime sunrise = switcher.SunRise;
+                DateTime sunrise = _switcher.SunRise;
             }
             catch(WebException we)
             {
                 MessageBox.Show("Got an error from suntime server, probably bad coords, navigating you to the setup page.");
-                OpenSetupPage(switcher);
+                OpenSetupPage();
                 return;
             }
-            MainPage mainPage = new MainPage(switcher);
+            MainPage mainPage = new MainPage(_switcher);
             MainFrame.Navigate(mainPage);
         }
 
-        public void OpenSetupPage(DayNightSwitcher switcher)
+        private void OpenSetupPage()
         {
-            MainFrame.Navigate(new SetupPage(switcher, OpenMainPage));
+            MainFrame.Navigate(new SetupPage(_switcher, OpenMainPage));
         }
 
         // Minimize to tray stuff
-        void trayIcon_MouseDoubleClick(object sender, EventArgs e)
+        private void NotifyClick(object sender, EventArgs e)
         {
             if (this.WindowState == WindowState.Minimized)
             {
@@ -124,12 +97,20 @@ namespace DayNightPapers
             }
         }
 
-        private ContextMenu CreateContextMenu()
+        private void SetupNotifyIcon()
+        {
+            NotifyIcon.Icon = Properties.Resources.icon;
+            NotifyIcon.ContextMenu = GetContextMenu();
+            NotifyIcon.NoLeftClickDelay = true;
+            NotifyIcon.LeftClickCommand = new ClickEventWrapper(NotifyClick);
+        }
+
+        private ContextMenu GetContextMenu()
         {
             ContextMenu contextMenu = new ContextMenu();
             MenuItem closeItem = new MenuItem();
             closeItem.Click += (closeSender, args) => this.Close();
-            closeItem.Header = "Close program";
+            closeItem.Header = "Close";
             contextMenu.Items.Add(closeItem);
             return contextMenu;
         }

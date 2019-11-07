@@ -14,7 +14,7 @@
             look up the sunrise and sunset time for your location</TextBlock>
 
         <Label DockPanel.Dock="Top" HorizontalAlignment="Center" FontSize="13">
-            <Hyperlink>https://www.gps-coordinates.net/</Hyperlink>
+            <Hyperlink Click="Hyperlink_Click">https://www.gps-coordinates.net/</Hyperlink>
         </Label>
 
         <TextBlock HorizontalAlignment="Center" DockPanel.Dock="Top" MaxWidth="500" TextWrapping="Wrap" TextAlignment="Center" FontSize="13" Margin="0,0,0,20" >

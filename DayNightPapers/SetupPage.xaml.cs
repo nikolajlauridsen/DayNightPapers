@@ -45,5 +45,10 @@ namespace DayNightPapers
                 }
             };
         }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.gps-coordinates.net");
+        }
     }
 }

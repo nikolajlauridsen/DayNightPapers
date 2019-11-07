@@ -39,6 +39,7 @@ namespace DayNightPapers
 
         public void LoadedEventHandler(object sender, EventArgs e)
         {
+            // If the latituted and longtitude is 0 then it's the first time the program has started.
             if (_switcher.Latitude == 0 && _switcher.Longtitude == 0)
             {
                 OpenSetupPage();
@@ -54,10 +55,12 @@ namespace DayNightPapers
                 }
                 catch (WebException we)
                 {
+                    // No internet connection 
                     if (we.Status == WebExceptionStatus.ConnectFailure || we.Status == WebExceptionStatus.NameResolutionFailure)
                     {
                         MessageBox.Show("Could not connect to the Sun server, navigating to setup page, click submit when you have regained internet connection");
                     }
+                    // Bad coordinate format.
                     else
                     {
                         MessageBox.Show("Got an error from suntime server, probably bad coords, navigating you to the setup page.");
@@ -66,6 +69,7 @@ namespace DayNightPapers
                     return;
                 }
 
+                // If all checks passes then just open the main page.
                 OpenMainPage();
                 // Don't minimize if setup page is displayed.
                 if (Settings.Default.Minimize)

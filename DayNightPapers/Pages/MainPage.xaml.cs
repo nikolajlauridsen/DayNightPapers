@@ -22,7 +22,7 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace DayNightPapers
+namespace DayNightPapers.Pages
 {
     /// <summary>
     /// Interaction logic for MainPage.xaml

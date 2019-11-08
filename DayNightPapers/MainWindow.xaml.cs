@@ -20,6 +20,7 @@ using System.Net;
 using Hardcodet.Wpf.TaskbarNotification;
 using WallpaperLib;
 using DayNightPapers.Helpers;
+using DayNightPapers.Pages;
 
 
 namespace DayNightPapers
@@ -38,6 +39,15 @@ namespace DayNightPapers
         }
 
         public void LoadedEventHandler(object sender, EventArgs e)
+        {
+            OpenMainPage();
+        }
+
+        /// <summary>
+        /// Opens the main page and navigates the UI to it 
+        /// Will force _switcher to make a request and navigate to Setup if it fails.
+        /// </summary>
+        public void OpenMainPage()
         {
             // If the latituted and longtitude is 0 then it's the first time the program has started.
             if (_switcher.Latitude == 0 && _switcher.Longtitude == 0)
@@ -70,24 +80,13 @@ namespace DayNightPapers
                 }
 
                 // If all checks passes then just open the main page.
-                OpenMainPage();
+                MainFrame.Navigate(new MainPage(_switcher, OpenSettingsPage));
                 // Don't minimize if setup page is displayed.
                 if (Settings.Default.Minimize)
                 {
                     this.WindowState = WindowState.Minimized;
                 }
             }
-
-        }
-
-        /// <summary>
-        /// Opens the main page and navigates the UI to it 
-        /// Will force _switcher to make a request and navigate to Setup if it fails.
-        /// </summary>
-        public void OpenMainPage()
-        {
-            MainPage mainPage = new MainPage(_switcher, OpenSettingsPage);
-            MainFrame.Navigate(mainPage);
         }
 
         private void OpenSetupPage()

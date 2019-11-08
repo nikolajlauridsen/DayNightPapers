@@ -1,15 +1,15 @@
-﻿<Page x:Class="DayNightPapers.SetupPage"
+﻿<Page x:Class="DayNightPapers.Pages.SetupPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DayNightPapers"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="400" d:DesignWidth="800"
       Title="SetupPage">
 
     <DockPanel>
-        <TextBlock HorizontalAlignment="Center" DockPanel.Dock="Top" MaxWidth="500" TextWrapping="Wrap" TextAlignment="Center" FontSize="13" Margin="0,100,0,20">
+        <TextBlock HorizontalAlignment="Center" DockPanel.Dock="Top" MaxWidth="500" TextWrapping="Wrap" TextAlignment="Center" FontSize="13" Margin="0,50,0,20">
             It seems like this is the first time you've started this program, before you can get started it needs to know your coordinates in order for it to
             look up the sunrise and sunset time for your location</TextBlock>
 

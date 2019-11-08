@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WallpaperLib;
 
-namespace DayNightPapers
+namespace DayNightPapers.Pages
 {
     /// <summary>
     /// Interaction logic for SetupPage.xaml

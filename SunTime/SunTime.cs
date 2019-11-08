@@ -12,6 +12,10 @@ namespace SunData
     {
         private List<SunTimeSubscriber> subscribers = new List<SunTimeSubscriber>();
         private static string apiUrl = @"https://api.sunrise-sunset.org/json";
+        
+        /// <summary>
+        /// Get or set the lattitude used to fetch the data from the API
+        /// </summary>
         public double Latitude
         {
             get { return Settings.Default.Latitude; }
@@ -25,6 +29,9 @@ namespace SunData
             }
         }
 
+        /// <summary>
+        /// Get or set the longtitude used to fetch the data from the API
+        /// </summary>
         public double Longtitude
         {
             get { return Settings.Default.Longtitude; }
@@ -37,13 +44,31 @@ namespace SunData
         }
 
         private ApiResult _apiResult = null;
-
+        
+        /// <summary>
+        /// Get all sun data from API for the currently set location
+        /// </summary>
         public SunTimeData SunTimeData => getApiResult().results;
+
+        /// <summary>
+        /// Get status of the last API request
+        /// </summary>
         public string ApiStatus => getApiResult().status;
 
+        /// <summary>
+        /// Get sunrise date and time for currently set location
+        /// </summary>
         public DateTime Sunrise => SunTimeData.Sunrise;
+
+        /// <summary>
+        /// Get sunset date and time for currently set location
+        /// </summary>
         public DateTime Sunset => SunTimeData.Sunset;
 
+        /// <summary>
+        /// Get JSON string from api for currently set location
+        /// </summary>
+        /// <returns></returns>
         private string getJsonString()
         {
             // Not optimal TODO: Revise
@@ -73,6 +98,10 @@ namespace SunData
             return content;
         }
         
+        /// <summary>
+        /// Get API Result, automatically fetches new data if current data is outdated
+        /// </summary>
+        /// <returns>ApiResult object containing API data</returns>
         private ApiResult getApiResult()
         {
             // Fetch API data for current day if it has not been fetched yet
@@ -95,11 +124,18 @@ namespace SunData
             }
         }
 
+        /// <summary>
+        /// Register a subscriber to be notified when sun data changes
+        /// </summary>
+        /// <param name="subscriber">Subscriber to be notified</param>
         public void RegisterSubscriber(SunTimeSubscriber subscriber)
         {
             subscribers.Add(subscriber);
         }
 
+        /// <summary>
+        /// Notify subscribers of changed sun data
+        /// </summary>
         public void SunTimeChanged()
         {
             foreach(SunTimeSubscriber sub in subscribers)

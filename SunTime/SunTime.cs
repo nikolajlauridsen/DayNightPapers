@@ -19,6 +19,9 @@ namespace SunData
             {
                 Settings.Default.Latitude = value;
                 Settings.Default.Save();
+                // Setting _apiResult to null will cause it to 
+                // be updated next time any API data is requested.
+                _apiResult = null;
             }
         }
 
@@ -29,6 +32,7 @@ namespace SunData
             {
                 Settings.Default.Longtitude = value;
                 Settings.Default.Save();
+                _apiResult = null;
             }
         }
 

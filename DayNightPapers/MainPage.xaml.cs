@@ -46,6 +46,7 @@ namespace DayNightPapers
                 NightImage.Source = getImageSource(switcher.NightPaper);
             }
 
+            SettingsImage.Source = BitmapToImage(Properties.Resources.wrench, ImageFormat.Png);
             SettingsBtn.Click += settingsOpen;
 
             DayLabelImage.Source = BitmapToImage(Properties.Resources.sun, ImageFormat.Png);

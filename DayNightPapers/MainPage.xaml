@@ -8,9 +8,10 @@
       Title="MainPage" >
 
     <DockPanel>
+
         <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center">
-            <StackPanel Margin="0,10,30,0">
-                <WrapPanel>
+            <StackPanel Margin="0,15,30,0">
+                <WrapPanel Margin="0,-3,0,3">
                     <Image Name="DayLabelImage" Height="20" Width="20" HorizontalAlignment="Left" Margin="3,0,0,5"></Image>
                     <Label Name="SunriseLabel"  Margin="0,-6,0,0" Style="{StaticResource SmallText}">7:55</Label>
                 </WrapPanel>
@@ -22,8 +23,10 @@
             <StackPanel Margin="0,10,0,0">
                 <WrapPanel>
                     <Image Name="NightLabelImage" Height="20" Width="20" HorizontalAlignment="Left" Margin="3,0,0,5"></Image>
-                    <Label Name="SunsetLabel"  Margin="0,-6,0,0" Style="{StaticResource SmallText}">7:55</Label>
-                    <Button Name="SettingsBtn" Margin="180,0,0,5" Width="100">Settings panel</Button>
+                    <Label Name="SunsetLabel"  Margin="0,-4,0,0" Style="{StaticResource SmallText}">7:55</Label>
+                    <Button Name="SettingsBtn" Margin="260,0,0, 0" Style="{StaticResource SettingsButton}" DockPanel.Dock="Top">
+                        <Image Name="SettingsImage" Height="20" Width="20" HorizontalAlignment="Left"></Image>
+                    </Button>
                 </WrapPanel>
                 
                 <Image Name="NightImage" Height="200" Width="355"></Image>

@@ -32,7 +32,7 @@ namespace DayNightPapers
 
         private DayNightSwitcher _switcher;
 
-        public MainPage(DayNightSwitcher switcher)
+        public MainPage(DayNightSwitcher switcher, RoutedEventHandler settingsOpen)
         {
             InitializeComponent();
 
@@ -45,6 +45,8 @@ namespace DayNightPapers
             if (switcher.NightPaper != null) { 
                 NightImage.Source = getImageSource(switcher.NightPaper);
             }
+
+            SettingsBtn.Click += settingsOpen;
 
             DayLabelImage.Source = BitmapToImage(Properties.Resources.sun, ImageFormat.Png);
             NightLabelImage.Source = BitmapToImage(Properties.Resources.moon, ImageFormat.Png);

@@ -86,13 +86,18 @@ namespace DayNightPapers
         /// </summary>
         public void OpenMainPage()
         {
-            MainPage mainPage = new MainPage(_switcher);
+            MainPage mainPage = new MainPage(_switcher, OpenSettingsPage);
             MainFrame.Navigate(mainPage);
         }
 
         private void OpenSetupPage()
         {
             MainFrame.Navigate(new SetupPage(_switcher, OpenMainPage));
+        }
+
+        private void OpenSettingsPage(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         // Minimize to tray stuff

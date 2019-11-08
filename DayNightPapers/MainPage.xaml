@@ -11,7 +11,7 @@
 
         <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center">
             <StackPanel Margin="0,15,30,0">
-                <WrapPanel Margin="0,-3,0,3">
+                <WrapPanel Margin="0,-2,0,2">
                     <Image Name="DayLabelImage" Height="20" Width="20" HorizontalAlignment="Left" Margin="3,0,0,5"></Image>
                     <Label Name="SunriseLabel"  Margin="0,-6,0,0" Style="{StaticResource SmallText}">7:55</Label>
                 </WrapPanel>

@@ -96,7 +96,7 @@ namespace DayNightPapers
 
         private void OpenSettingsPage(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            MainFrame.Navigate(new SettingsPage(OpenMainPage));
         }
 
         // Minimize to tray stuff

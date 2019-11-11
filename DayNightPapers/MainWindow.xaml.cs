@@ -47,7 +47,7 @@ namespace DayNightPapers
         /// Opens the main page and navigates the UI to it 
         /// Will force _switcher to make a request and navigate to Setup if it fails.
         /// </summary>
-        public void OpenMainPage()
+        public void OpenMainPage(bool blockMinimize = false)
         {
             // If the latituted and longtitude is 0 then it's the first time the program has started.
             if (_switcher.Latitude == 0 && _switcher.Longtitude == 0)
@@ -82,7 +82,7 @@ namespace DayNightPapers
                 // If all checks passes then just open the main page.
                 MainFrame.Navigate(new MainPage(_switcher, OpenSettingsPage));
                 // Don't minimize if setup page is displayed.
-                if (Settings.Default.Minimize)
+                if (Settings.Default.Minimize && !blockMinimize)
                 {
                     this.WindowState = WindowState.Minimized;
                 }
@@ -96,7 +96,7 @@ namespace DayNightPapers
 
         private void OpenSettingsPage(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new SettingsPage(OpenMainPage));
+            MainFrame.Navigate(new SettingsPage(_switcher, OpenMainPage));
         }
 
         // Minimize to tray stuff

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WallpaperLib;
+using DayNightPapers.Properties;
 
 namespace DayNightPapers.Pages
 {
@@ -20,14 +22,41 @@ namespace DayNightPapers.Pages
     /// </summary>
     public partial class SettingsPage : Page
     {
-        private Action _returnHandler;
+        private Action<bool> _returnHandler;
+        private DayNightSwitcher _switcher;
 
-        public SettingsPage(Action returnHandler)
+        public SettingsPage(DayNightSwitcher switcher, Action<bool> returnHandler)
         {
             InitializeComponent();
 
             _returnHandler = returnHandler;
-            CancelBtn.Click += (sender, e) => _returnHandler?.Invoke();
+            _switcher = switcher;
+
+            LongBox.Text = _switcher.Longtitude.ToString();
+            LatBox.Text = _switcher.Latitude.ToString();
+            MinimizeAtStartCheck.IsChecked = Settings.Default.Minimize;
+
+            CancelBtn.Click += (sender, e) => _returnHandler?.Invoke(true);
+            SaveBtn.Click += SaveBtnClick;
+        }
+
+        private void SaveBtnClick(object sender, RoutedEventArgs e)
+        {
+            // Parse lat/long
+            double lat, longt;
+
+            if (double.TryParse(LongBox.Text, out longt) && double.TryParse(LatBox.Text, out lat))
+            {
+                _switcher.Latitude = lat;
+                _switcher.Longtitude = longt;
+            }
+            else
+            {
+                MessageBox.Show("Incorrect lat/long format");
+            }
+
+            Settings.Default.Minimize = (bool) MinimizeAtStartCheck.IsChecked;
+            _returnHandler(true);
         }
     }
 }

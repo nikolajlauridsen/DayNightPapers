@@ -52,18 +52,6 @@ namespace DayNightPapers.Pages
             DayLabelImage.Source = BitmapToImage(Properties.Resources.sun, ImageFormat.Png);
             NightLabelImage.Source = BitmapToImage(Properties.Resources.moon, ImageFormat.Png);
 
-            MinimizeAtStartCheck.IsChecked = Settings.Default.Minimize;
-            MinimizeAtStartCheck.Checked += (sender, e) => {
-                Settings.Default.Minimize = true;
-                Settings.Default.Save();
-                };
-
-            MinimizeAtStartCheck.Unchecked += (sender, e) =>
-            {
-                Settings.Default.Minimize = false;
-                Settings.Default.Save();
-            };
-
             SunriseLabel.Content = _switcher.SunRise.ToString("H:mm");
             SunsetLabel.Content = _switcher.SunSet.ToString("H:mm");
 

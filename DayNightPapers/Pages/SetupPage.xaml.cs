@@ -22,7 +22,7 @@ namespace DayNightPapers.Pages
     public partial class SetupPage : Page
     {
         private DayNightSwitcher _switcher;
-        public SetupPage(DayNightSwitcher switcher, Action navigateAction)
+        public SetupPage(DayNightSwitcher switcher, Action<bool> navigateAction)
         {
             InitializeComponent();
 
@@ -38,7 +38,7 @@ namespace DayNightPapers.Pages
                 {
                     _switcher.Latitude = lat;
                     _switcher.Longtitude = longt;
-                    navigateAction();
+                    navigateAction(false);
                 } else
                 {
                     MessageBox.Show("Incorrect lat/long format");

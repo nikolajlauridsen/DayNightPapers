@@ -34,9 +34,5 @@
             </StackPanel>
         </WrapPanel>
 
-        <WrapPanel DockPanel.Dock="Top" Margin="15">
-            <Label Style="{StaticResource SmallText}" VerticalAlignment="Center">Minimize at start</Label>
-            <CheckBox Style="{StaticResource FancyCheck}" VerticalAlignment="Center" Margin="0,4,0,0" Name="MinimizeAtStartCheck"></CheckBox>
-        </WrapPanel>
     </DockPanel>
 </Page>

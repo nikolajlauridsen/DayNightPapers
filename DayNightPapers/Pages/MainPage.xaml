@@ -10,7 +10,7 @@
     <DockPanel>
 
         <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center">
-            <StackPanel Margin="0,15,30,0">
+            <StackPanel Margin="0,0,30,0">
                 <WrapPanel Margin="0,-2,0,2">
                     <Image Name="DayLabelImage" Height="20" Width="20" HorizontalAlignment="Left" Margin="3,0,0,5"></Image>
                     <Label Name="SunriseLabel"  Margin="0,-6,0,0" Style="{StaticResource SmallText}">7:55</Label>
@@ -20,7 +20,7 @@
                 <Button Name="DayPickerBtn" Click="DayPickerBtn_Click" Width="auto" Style="{StaticResource PrettyButton}" Margin="0,10,0,0">Select wallpaper</Button>
             </StackPanel>
 
-            <StackPanel Margin="0,10,0,0">
+            <StackPanel >
                 <WrapPanel>
                     <Image Name="NightLabelImage" Height="20" Width="20" HorizontalAlignment="Left" Margin="3,0,0,5"></Image>
                     <Label Name="SunsetLabel"  Margin="0,-4,0,0" Style="{StaticResource SmallText}">7:55</Label>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DayNightPapers"
         xmlns:tb="http://www.hardcodet.net/taskbar"
         mc:Ignorable="d"
-        Title="DayNightPapers" Height="400" Width="800" StateChanged="Window_StateChanged"
+        Title="DayNightPapers" Height="350" Width="800" StateChanged="Window_StateChanged"
         WindowStyle="SingleBorderWindow" ResizeMode="CanMinimize">
 
     <DockPanel>

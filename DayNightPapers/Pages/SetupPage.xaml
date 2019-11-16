@@ -5,11 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DayNightPapers"
       mc:Ignorable="d" 
-      d:DesignHeight="350" d:DesignWidth="800"
+      d:DesignHeight="320" d:DesignWidth="800"
       Title="SetupPage">
 
     <DockPanel>
-        <TextBlock HorizontalAlignment="Center" DockPanel.Dock="Top" MaxWidth="500" TextWrapping="Wrap" TextAlignment="Center" FontSize="13" Margin="0,30,0,20">
+        <TextBlock HorizontalAlignment="Center" DockPanel.Dock="Top" MaxWidth="500" TextWrapping="Wrap" TextAlignment="Center" FontSize="13" Margin="0,20,0,20">
             It seems like this is the first time you've started this program, before you can get started it needs to know your coordinates in order for it to
             look up the sunrise and sunset time for your location</TextBlock>
 
@@ -17,7 +17,7 @@
             <Hyperlink Click="Hyperlink_Click">https://www.gps-coordinates.net/</Hyperlink>
         </Label>
 
-        <TextBlock HorizontalAlignment="Center" DockPanel.Dock="Top" MaxWidth="500" TextWrapping="Wrap" TextAlignment="Center" FontSize="13" Margin="0,0,0,20" >
+        <TextBlock HorizontalAlignment="Center" DockPanel.Dock="Top" MaxWidth="500" TextWrapping="Wrap" TextAlignment="Center" FontSize="13" Margin="0,0,0,10" >
              Seems to work well for this purpose, this program is however in no way affiliated with that site
         </TextBlock>
         <WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="5">
@@ -30,7 +30,7 @@
             <TextBox Width="130" Height="23" Name="Latitude"></TextBox>
         </WrapPanel>
 
-        <Button DockPanel.Dock="Bottom" Width="100" Height="25" Margin="25" Style="{StaticResource SmallButton}" Name="SubmitBtn">Submit</Button>
+        <Button DockPanel.Dock="Top" Width="100" Height="25" Margin="25" Style="{StaticResource SmallButton}" Name="SubmitBtn">Submit</Button>
         
         <Label DockPanel.Dock="Top"></Label>
     </DockPanel>

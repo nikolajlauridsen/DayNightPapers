@@ -56,6 +56,7 @@ namespace DayNightPapers.Pages
             }
 
             Settings.Default.Minimize = (bool) MinimizeAtStartCheck.IsChecked;
+            Settings.Default.Save();
             _returnHandler(true);
         }
     }

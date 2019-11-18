@@ -14,6 +14,7 @@
 - [Installation](#installation)
   - [First time setup](#first-time-setup)
 - [Credits and third party licenses](#credits-and-third-party-licenses)
+- [Isues, bugs or suggestions](#isues-bugs-or-suggestions)
 
 
 
@@ -55,8 +56,15 @@ Once you've set up your coordinates simply just press the submit button and you'
 
 # Credits and third party licenses
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In semper convallis felis sed efficitur. Mauris ut leo ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis id metus a tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse ultrices, eros in lacinia volutpat, nisl lorem consectetur sapien, in feugiat ante nisl eget nunc. Sed nec facilisis enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris nec feugiat risus. Cras non dictum erat. Aliquam non fermentum leo.
+The api for fetching sunrise and sunset time is provided by [Sunrise-Sunset.org](https://sunrise-sunset.org) thanks for supplying an awesome free api :heart:  
 
-Nullam convallis, nulla sed vehicula fringilla, eros quam commodo tellus, et scelerisque nisl ligula non mauris. Maecenas rutrum volutpat orci, at ullamcorper magna blandit ut. Vivamus interdum rutrum mi, ut ultrices mauris. Pellentesque sed sapien id odio ornare scelerisque quis blandit dui. Quisque a sem sed est vestibulum ultrices. Fusce eu libero dictum lorem venenatis porttitor nec at odio. Suspendisse vel ante ipsum. Praesent consequat ultrices lacus, ut scelerisque lorem consectetur at. Nullam posuere neque erat, sit amet eleifend nibh porttitor ac. Sed a ex eget lectus eleifend vulputate. Donec bibendum justo et justo sodales aliquam.
+TrayIcon is called Hardcodet.NotifyIcon.Wpf and is made by Philipp Sumi
 
-Thank you to [Sunrise-Sunset.org](https://sunrise-sunset.org) for supplying an awesome API for free :heart:
+Sun icon made by Freepik from www.flaticon.com
+
+Moon icon made by iconixar from www.flaticon.com
+
+Wrench icon designed by Freepik from www.flaticon.com
+
+# Isues, bugs or suggestions 
+Feel free to create an issue using the github issue feature, I'd love to hear from you

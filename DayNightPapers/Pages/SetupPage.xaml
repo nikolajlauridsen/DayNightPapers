@@ -20,14 +20,15 @@
         <TextBlock Style="{StaticResource PrettyBlock}" HorizontalAlignment="Center" DockPanel.Dock="Top" MaxWidth="500" TextWrapping="Wrap" TextAlignment="Center" FontSize="13" Margin="0,0,0,10" >
              Seems to work well for this purpose, this program is however in no way affiliated with that site
         </TextBlock>
-        <WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="5">
-            <Label Style="{StaticResource SmallText}" VerticalAlignment="Center">Longtitude: </Label>
-            <TextBox Width="130" Height="23" Name="Longtitude"></TextBox>
-        </WrapPanel>
 
         <WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="5">
             <Label Style="{StaticResource SmallText}" VerticalAlignment="Center" Width="70" Margin="0,0,0,0">Latitude:</Label>
-            <TextBox Width="130" Height="23" Name="Latitude" Margin="10,0,0,0"></TextBox>
+            <TextBox Style="{StaticResource TextInput}" Width="130" Height="23" Name="Latitude" Margin="10,0,0,0"></TextBox>
+        </WrapPanel>
+
+        <WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="5">
+            <Label Style="{StaticResource SmallText}" VerticalAlignment="Center">Longtitude:</Label>
+            <TextBox Style="{StaticResource TextInput}" Width="130" Height="23" Name="Longtitude"></TextBox>
         </WrapPanel>
 
         <Button DockPanel.Dock="Top" Width="100" Height="25" Margin="25" Style="{StaticResource SmallButton}" Name="SubmitBtn">Submit</Button>

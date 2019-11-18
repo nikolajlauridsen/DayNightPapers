@@ -9,14 +9,15 @@
       Title="SettingsPage">
 
     <DockPanel VerticalAlignment="Center" Margin="0,70,0,0">
-        <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0,0,0,10">
-            <Label Style="{StaticResource SmallText}">Longtitude</Label>
-            <TextBox Name="LongBox" Style="{StaticResource TextInput}" Width="100"></TextBox>
-        </WrapPanel>
 
         <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center">
             <Label Style="{StaticResource SmallText}" Margin="0,0,12,0">Lattitude</Label>
-            <TextBox Name="LatBox" Style="{StaticResource TextInput}" Width="100"></TextBox>
+            <TextBox Name="LatBox" Style="{StaticResource TextInput}" Width="100"  Margin="0,0,0,10"></TextBox>
+        </WrapPanel>
+        
+        <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center">
+            <Label Style="{StaticResource SmallText}">Longtitude</Label>
+            <TextBox Name="LongBox" Style="{StaticResource TextInput}" Width="100"></TextBox>
         </WrapPanel>
 
         <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0,30,0,0">

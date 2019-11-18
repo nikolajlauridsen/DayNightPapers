@@ -68,14 +68,14 @@ namespace DayNightPapers
                     // No internet connection 
                     if (we.Status == WebExceptionStatus.ConnectFailure || we.Status == WebExceptionStatus.NameResolutionFailure)
                     {
-                        MessageBox.Show("Could not connect to the Sun server, navigating to setup page, click submit when you have regained internet connection");
+                        OpenConnectionErrorPage();
                     }
                     // Bad coordinate format.
                     else
                     {
                         MessageBox.Show("Got an error from suntime server, probably bad coords, navigating you to the setup page.");
+                        OpenSetupPage();
                     }
-                    OpenSetupPage();
                     return;
                 }
 
@@ -97,6 +97,11 @@ namespace DayNightPapers
         private void OpenSettingsPage(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new SettingsPage(_switcher, OpenMainPage));
+        }
+
+        private void OpenConnectionErrorPage()
+        {
+            MainFrame.Navigate(new ConnectionErrorPage(OpenMainPage));
         }
 
         // Minimize to tray stuff

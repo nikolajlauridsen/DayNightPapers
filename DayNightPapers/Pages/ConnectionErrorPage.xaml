@@ -1,0 +1,20 @@
+﻿<Page x:Class="DayNightPapers.Pages.ConnectionErrorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DayNightPapers.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="320" d:DesignWidth="800"
+      Title="ConnectionErrorPage">
+
+    <DockPanel>
+        <StackPanel VerticalAlignment="Center">
+            <TextBlock Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" MaxWidth="500" TextAlignment="Center" >
+            Unable to connect to sun time API, please check your internet connection and press retry
+            </TextBlock>
+
+            <Button Name="RetryBtn" Margin="0,100,0,-100" VerticalAlignment="Bottom" Style="{StaticResource PrettyButton}">Retry</Button>
+        </StackPanel>
+    </DockPanel>
+</Page>

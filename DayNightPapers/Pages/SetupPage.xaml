@@ -9,7 +9,7 @@
       Title="SetupPage">
 
     <DockPanel>
-        <TextBlock Style="{StaticResource PrettyBlock}" HorizontalAlignment="Center" DockPanel.Dock="Top" MaxWidth="500" TextWrapping="Wrap" TextAlignment="Center" FontSize="13" Margin="0,20,0,20">
+        <TextBlock Style="{StaticResource PrettyBlock}" HorizontalAlignment="Center" DockPanel.Dock="Top" MaxWidth="500" TextWrapping="Wrap" TextAlignment="Center" FontSize="13" Margin="0,20,0,10">
             It seems like this is the first time you've started this program, before you can get started it needs to know your coordinates in order for it to
             look up the sunrise and sunset time for your location</TextBlock>
 

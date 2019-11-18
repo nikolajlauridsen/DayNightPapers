@@ -118,6 +118,11 @@
             <Setter Property="Foreground" Value="{StaticResource PrimaryFore}"></Setter>
         </Style>
 
+        <Style TargetType="TextBlock" x:Key="PrettyBlock">
+            <Setter Property="FontSize" Value="14"></Setter>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryFore}"></Setter>
+        </Style>
+
         <Style x:Key="DropDown" TargetType="{x:Type ComboBox}">
             <Setter Property="Foreground" Value="{StaticResource PrimaryFore}"></Setter>
             <Setter Property="Height" Value="30"></Setter>

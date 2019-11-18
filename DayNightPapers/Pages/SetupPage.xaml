@@ -9,7 +9,7 @@
       Title="SetupPage">
 
     <DockPanel>
-        <TextBlock HorizontalAlignment="Center" DockPanel.Dock="Top" MaxWidth="500" TextWrapping="Wrap" TextAlignment="Center" FontSize="13" Margin="0,20,0,20">
+        <TextBlock Style="{StaticResource PrettyBlock}" HorizontalAlignment="Center" DockPanel.Dock="Top" MaxWidth="500" TextWrapping="Wrap" TextAlignment="Center" FontSize="13" Margin="0,20,0,20">
             It seems like this is the first time you've started this program, before you can get started it needs to know your coordinates in order for it to
             look up the sunrise and sunset time for your location</TextBlock>
 
@@ -17,17 +17,17 @@
             <Hyperlink Click="Hyperlink_Click">https://www.gps-coordinates.net/</Hyperlink>
         </Label>
 
-        <TextBlock HorizontalAlignment="Center" DockPanel.Dock="Top" MaxWidth="500" TextWrapping="Wrap" TextAlignment="Center" FontSize="13" Margin="0,0,0,10" >
+        <TextBlock Style="{StaticResource PrettyBlock}" HorizontalAlignment="Center" DockPanel.Dock="Top" MaxWidth="500" TextWrapping="Wrap" TextAlignment="Center" FontSize="13" Margin="0,0,0,10" >
              Seems to work well for this purpose, this program is however in no way affiliated with that site
         </TextBlock>
         <WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="5">
-            <Label VerticalAlignment="Center">Longtitude: </Label>
+            <Label Style="{StaticResource SmallText}" VerticalAlignment="Center">Longtitude: </Label>
             <TextBox Width="130" Height="23" Name="Longtitude"></TextBox>
         </WrapPanel>
 
         <WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="5">
-            <Label VerticalAlignment="Center" Width="70">Latitude:</Label>
-            <TextBox Width="130" Height="23" Name="Latitude"></TextBox>
+            <Label Style="{StaticResource SmallText}" VerticalAlignment="Center" Width="70" Margin="0,0,0,0">Latitude:</Label>
+            <TextBox Width="130" Height="23" Name="Latitude" Margin="10,0,0,0"></TextBox>
         </WrapPanel>
 
         <Button DockPanel.Dock="Top" Width="100" Height="25" Margin="25" Style="{StaticResource SmallButton}" Name="SubmitBtn">Submit</Button>

@@ -10,7 +10,7 @@
 
     <DockPanel>
         <StackPanel VerticalAlignment="Center">
-            <TextBlock Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" MaxWidth="500" TextAlignment="Center" >
+            <TextBlock Style="{StaticResource PrettyBlock}" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" MaxWidth="500" TextAlignment="Center" >
             Unable to connect to sun time API, please check your internet connection and press retry
             </TextBlock>
 

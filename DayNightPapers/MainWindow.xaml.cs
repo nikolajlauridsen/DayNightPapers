@@ -36,6 +36,7 @@ namespace DayNightPapers
 
             SetupNotifyIcon();
             _switcher = new DayNightSwitcher();
+            MoveToCornor();
         }
 
         public void LoadedEventHandler(object sender, EventArgs e)
@@ -119,6 +120,13 @@ namespace DayNightPapers
             }
         }
 
+        private void MoveToCornor()
+        {
+            Rect desktopArea = SystemParameters.WorkArea;
+            this.Left = desktopArea.Right - this.Width + 5;
+            this.Top = desktopArea.Bottom - this.Height - SystemParameters.MenuBarHeight - 5;
+        }
+
         private void SetupNotifyIcon()
         {
             NotifyIcon.Icon = Properties.Resources.icon;
@@ -143,6 +151,7 @@ namespace DayNightPapers
                 this.ShowInTaskbar = false;
             } else if (this.WindowState == WindowState.Normal) {
                 this.ShowInTaskbar = true;
+                this.MoveToCornor();
             }
         }
 

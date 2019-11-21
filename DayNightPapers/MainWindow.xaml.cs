@@ -131,7 +131,7 @@ namespace DayNightPapers
         {
             ContextMenu contextMenu = new ContextMenu();
             MenuItem closeItem = new MenuItem();
-            closeItem.Click += (closeSender, args) => this.Close();
+            closeItem.Click += (closeSender, args) => Environment.Exit(1);
             closeItem.Header = "Close";
             contextMenu.Items.Add(closeItem);
             return contextMenu;
@@ -141,11 +141,15 @@ namespace DayNightPapers
         {
             if (this.WindowState == WindowState.Minimized) {
                 this.ShowInTaskbar = false;
-                this.WindowStyle = WindowStyle.ToolWindow;
             } else if (this.WindowState == WindowState.Normal) {
                 this.ShowInTaskbar = true;
-                this.WindowStyle = WindowStyle.SingleBorderWindow;
             }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.WindowState = WindowState.Minimized;
         }
     }
 }

@@ -34,7 +34,7 @@ If you want the software to start automatically when windows starts, which is ob
 1. Download the newest version of the software from the [releases page](https://github.com/nikolajlauridsen/DayNightPapers/releases)
 2. Unzip the file
 3. Open the unzipped folder and create a shortcut to DayNightPapers.exe
-4. Open the startup folder, the easiest way to do this is to open the run menu by pressing ctrl-r and then typing ```shell:startup``` into the run prompt, see image below
+4. Open the startup folder, the easiest way to do this is to open the run menu by pressing windows-r and then typing ```shell:startup``` into the run prompt, see image below
 5. Copy or cut and paste the shortcut of DayNightPapers.exe into the startup folder
 6. Enjoy
 
